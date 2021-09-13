@@ -4,7 +4,7 @@ from __future__ import print_function
 from six.moves import input
 import smtplib
 
-class GmailBruteForce():
+class yahooBruteForce():
     def __init__(self):
         self.accounts = []
         self.passwords = []
