@@ -25,7 +25,7 @@ class GmailBruteForce():
         self.smtp.starttls()
         self.smtp.ehlo()
     
-    def try_gmail(self):
+    def try_yahoo(self):
 
         for user in self.accounts:
             for password in self.passwords:
