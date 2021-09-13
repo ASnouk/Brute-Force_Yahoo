@@ -44,7 +44,6 @@ print('''
 
 	''')
 
-instance = yahooBruteForce()
 
 do = input('''
 		Choose any number ?
