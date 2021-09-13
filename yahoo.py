@@ -52,7 +52,7 @@ print('''
 
 	''')
 
-instance = GmailBruteForce()
+instance = yahooBruteForce()
 
 do = input('''
 		Choose any number ?
