@@ -69,7 +69,7 @@ if do == '1':
     instance.accounts.append(user)
     instance.get_pass_list(senha)
 
-    instance.try_gmail()
+    instance.try_yahoo()
    
 ############
 if do == '2':
