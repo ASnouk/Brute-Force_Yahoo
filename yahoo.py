@@ -1,7 +1,7 @@
 import smtplib, time, sys
  
 try:
-    server = smtplib.SMTP('smtp.mail.yahoo.com',587)
+    server = smtplib.SMTP('smtp.mail.yahoo.com',465)
     server.ehlo()
     server.starttls()
 except:
