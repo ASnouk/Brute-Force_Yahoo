@@ -46,15 +46,15 @@ print('''
 
 
 do = input('''
-		Choose any number ?
+		escolher sua opção ?
 		1 - yahoo
-		2 - Meu Canal
+		2 - embreve
 		
 		==> ''')
 
 if do == '1':
-    user = input("email : ")
-    senha = input("passlist : ")
+    username = input("email : ")
+    password = input("passlist : ")
     headers = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
     instance.accounts.append(username)
@@ -63,12 +63,4 @@ if do == '1':
     instance.try_yahoo()
    
 ############
-if do == '2':
-    user = input("email : ")
-    senha = input("passlist : ")
-    headers = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
-    instance.accounts.append(user)
-    instance.get_pass_list(senha)
-
-    instance.try_gmail()
